@@ -26,8 +26,11 @@ class _Wheather_AppState extends State<Wheather_App> {
   num? pressure;
   num? humidity;
   num? cover;
-  num? sunset;
-  num? sunrise;
+  late int sunset;
+  late int sunrise;
+
+  var dt_sunrise;
+  var dt_sunset;
 
   String cityname='';
   String description='';
@@ -60,6 +63,7 @@ class _Wheather_AppState extends State<Wheather_App> {
           child: Padding(
             padding: const EdgeInsets.only(left: 14, top: 35),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('${cityname}', style: TextStyle(fontWeight: FontWeight.bold,
@@ -71,7 +75,7 @@ class _Wheather_AppState extends State<Wheather_App> {
                     fontSize: 28,
                     color: Colors.white,
                     fontFamily: 'Prata'),),
-                SizedBox(height: 80,),
+                //SizedBox(height: 80,),
                 Padding(
                   padding: const EdgeInsets.only(left: 40),
                   child: Column(
@@ -84,28 +88,28 @@ class _Wheather_AppState extends State<Wheather_App> {
                     ],
                   ),
                 ),
-                SizedBox(height: 60,),
+                //SizedBox(height: 60,),
                 Padding(
                   padding: const EdgeInsets.only(left: 18),
                   child: Row(
                     children: [
                       Icon(Icons.cloud_circle_outlined, size: 60,
                         color: Colors.white,),
-                      Text('${formattedTime}', style: TextStyle(
+                      Text('${DateFormat('hh:mm a').format(dt_sunset)}', style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 26,
                           color: Colors.white),),
                       SizedBox(width: 50,),
                       Icon(Icons.cloud_circle_outlined, size: 60,
                         color: Colors.white,),
-                      Text('${formattedTime}', style: TextStyle(
+                      Text('${DateFormat('hh:mm a').format(dt_sunrise)}', style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 26,
                           color: Colors.white),),
                     ],
                   ),
                 ),
-                SizedBox(height: 90,),
+                //SizedBox(height: 90,),
                 Text('${temp?.toInt()}°C', style: TextStyle(fontWeight: FontWeight.bold,
                     fontSize: 120,
                     color: Colors.white.withOpacity(.6)),)
@@ -170,7 +174,10 @@ class _Wheather_AppState extends State<Wheather_App> {
         sunrise=decodedData['sys']['sunrise'];
         sunset=decodedData['sys']['sunset'];
         description=decodedData['weather'][0]['description'];
-        //print(description);
+
+        dt_sunrise = DateTime.fromMillisecondsSinceEpoch(sunrise);
+        dt_sunset = DateTime.fromMillisecondsSinceEpoch(sunrise);
+
       }
     });
   }
