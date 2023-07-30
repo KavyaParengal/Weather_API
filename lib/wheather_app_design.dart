@@ -69,7 +69,7 @@ class _Wheather_AppState extends State<Wheather_App> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('${cityname}', style: TextStyle(fontWeight: FontWeight.bold,
+                    Text('${cityname.toUpperCase()}', style: TextStyle(fontWeight: FontWeight.bold,
                         fontSize: 50,
                         color: Colors.white,
                         fontFamily: 'Prata'),),
@@ -87,7 +87,7 @@ class _Wheather_AppState extends State<Wheather_App> {
                   child: Column(
                     children: [
                       Icon(Icons.cloud, size: 68, color: Colors.white,),
-                      Text('${description}', style: TextStyle(
+                      Text('${description.toUpperCase()}', style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 26,
                           color: Colors.white),),
@@ -116,9 +116,11 @@ class _Wheather_AppState extends State<Wheather_App> {
                   ),
                 ),
                 //SizedBox(height: 90,),
-                Text('${temp?.toInt()}°C', style: TextStyle(fontWeight: FontWeight.bold,
-                    fontSize: 120,
-                    color: Colors.white.withOpacity(.6)),)
+                Center(
+                  child: Text('${temp?.toInt()}°C', style: TextStyle(fontWeight: FontWeight.bold,
+                      fontSize: 120,
+                      color: Colors.white.withOpacity(.6)),),
+                )
               ],
             ),
           ),
