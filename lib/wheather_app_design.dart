@@ -66,15 +66,21 @@ class _Wheather_AppState extends State<Wheather_App> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('${cityname}', style: TextStyle(fontWeight: FontWeight.bold,
-                    fontSize: 50,
-                    color: Colors.white,
-                    fontFamily: 'Prata'),),
-                Text('${dayOfWeek}, ${monthAndDate}', style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 28,
-                    color: Colors.white,
-                    fontFamily: 'Prata'),),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('${cityname}', style: TextStyle(fontWeight: FontWeight.bold,
+                        fontSize: 50,
+                        color: Colors.white,
+                        fontFamily: 'Prata'),),
+                    Text('${dayOfWeek}, ${monthAndDate}', style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 28,
+                        color: Colors.white,
+                        fontFamily: 'Prata'),),
+                  ],
+                ),
+
                 //SizedBox(height: 80,),
                 Padding(
                   padding: const EdgeInsets.only(left: 40),
