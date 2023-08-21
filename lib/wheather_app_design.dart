@@ -184,7 +184,7 @@ class _Wheather_AppState extends State<Wheather_App> {
         description=decodedData['weather'][0]['description'];
 
         dt_sunrise = DateTime.fromMillisecondsSinceEpoch(sunrise);
-        dt_sunset = DateTime.fromMillisecondsSinceEpoch(sunrise);
+        dt_sunset = DateTime.fromMillisecondsSinceEpoch(sunset);
 
       }
     });
